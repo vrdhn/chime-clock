@@ -1,5 +1,8 @@
 # 🔔 Chime Clock
 
+[![Alt text](screenshot.jpg)](screenshot.jpg)
+
+
 A minimalist Android application that brings the classic charm of hourly and half-hourly chimes to your smartphone.
 
 ## ✨ Features
