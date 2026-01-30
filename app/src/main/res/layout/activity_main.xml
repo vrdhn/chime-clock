@@ -41,25 +41,61 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Night Mode Hours"
+            android:text="Night Mode Start"
+            android:layout_marginBottom="4dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <Spinner
+                android:id="@+id/spinner_night_start_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/hours_array"/>
+            <Spinner
+                android:id="@+id/spinner_night_start_minute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/minutes_array"/>
+            <Spinner
+                android:id="@+id/spinner_night_start_ampm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/ampm_array"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Night Mode End"
             android:layout_marginBottom="4dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
-            <Button
-                android:id="@+id/btn_night_start"
+            <Spinner
+                android:id="@+id/spinner_night_end_hour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Start: 23:00"/>
-            <Button
-                android:id="@+id/btn_night_end"
+                android:entries="@array/hours_array"/>
+            <Spinner
+                android:id="@+id/spinner_night_end_minute"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="End: 06:00"/>
+                android:entries="@array/minutes_array"/>
+            <Spinner
+                android:id="@+id/spinner_night_end_ampm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/ampm_array"/>
         </LinearLayout>
 
         <TextView
@@ -86,12 +122,48 @@
             android:max="100"
             android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:id="@+id/btn_test"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Test Chime"
-            android:layout_marginTop="16dp"/>
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <Spinner
+                android:id="@+id/spinner_test_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/hours_array"/>
+
+            <Spinner
+                android:id="@+id/spinner_test_minute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/minutes_array"/>
+
+            <Spinner
+                android:id="@+id/spinner_test_ampm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/ampm_array"/>
+
+            <Button
+                android:id="@+id/btn_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txt_status"

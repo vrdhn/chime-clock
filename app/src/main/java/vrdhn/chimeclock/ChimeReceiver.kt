@@ -41,12 +41,19 @@ class ChimeReceiver : BroadcastReceiver() {
         val hour = if (testHour != -1) testHour else now.get(Calendar.HOUR_OF_DAY)
         val minute = if (testMinute != -1) testMinute else now.get(Calendar.MINUTE)
 
-        val nightStart = prefs.getInt("night_start", 23)
-        val nightEnd = prefs.getInt("night_end", 6)
-        val isNight = if (nightStart > nightEnd) {
-            hour >= nightStart || hour < nightEnd
+        val startH = prefs.getInt("night_start_h", 23)
+        val startM = prefs.getInt("night_start_m", 0)
+        val endH = prefs.getInt("night_end_h", 6)
+        val endM = prefs.getInt("night_end_m", 0)
+        
+        val startTotal = startH * 60 + startM
+        val endTotal = endH * 60 + endM
+        val currentTotal = hour * 60 + minute
+
+        val isNight = if (startTotal > endTotal) {
+            currentTotal >= startTotal || currentTotal < endTotal
         } else {
-            hour in nightStart until nightEnd
+            currentTotal in startTotal until endTotal
         }
 
         val volume = if (isNight) {
@@ -65,7 +72,7 @@ class ChimeReceiver : BroadcastReceiver() {
 
         val useLongChime = prefs.getBoolean("long_chime", false)
         val dingCount = if (isHalfHour) 1 else {
-            val h = now.get(Calendar.HOUR)
+            val h = if (testHour != -1) testHour % 12 else now.get(Calendar.HOUR)
             if (h == 0) 12 else h
         }
 
@@ -103,7 +110,7 @@ class ChimeReceiver : BroadcastReceiver() {
 
                     if (useLongChime) {
                         sp.play(longChimeId, volume, volume, 1, 0, 1f)
-                        handler.postDelayed({ playDings(dingCount) }, 1500)
+                        handler.postDelayed({ playDings(dingCount) }, 3000)
                     } else {
                         playDings(dingCount)
                     }
