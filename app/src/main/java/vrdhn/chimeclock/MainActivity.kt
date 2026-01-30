@@ -137,5 +137,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         ChimeReceiver.scheduleNext(this)
+        checkAlarmPermission()
+    }
+
+    private fun checkAlarmPermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
+            if (!alarmManager.canScheduleExactAlarms()) {
+                val intent = Intent().apply {
+                    action = android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                    data = android.net.Uri.parse("package:$packageName")
+                }
+                startActivity(intent)
+            }
+        }
     }
 }
