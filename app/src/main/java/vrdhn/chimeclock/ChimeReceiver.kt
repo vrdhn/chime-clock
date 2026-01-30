@@ -105,12 +105,12 @@ class ChimeReceiver : BroadcastReceiver() {
                             return
                         }
                         sp.play(dingId, volume, volume, 1, 0, 1f)
-                        handler.postDelayed({ playDings(count - 1) }, 1000)
+                        handler.postDelayed({ playDings(count - 1) }, 1500)
                     }
 
                     if (useLongChime) {
                         sp.play(longChimeId, volume, volume, 1, 0, 1f)
-                        handler.postDelayed({ playDings(dingCount) }, 3000)
+                        handler.postDelayed({ playDings(dingCount) }, 4000)
                     } else {
                         playDings(dingCount)
                     }
